@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Dianis 🌿</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --verde-oscuro: #2d5a3d;
+    --verde-medio: #4a7c5c;
+    --verde-claro: #7aad8a;
+    --verde-palido: #c8e6c9;
+    --crema: #faf6f0;
+    --crema-oscuro: #f0e8dc;
+    --dorado: #b8976a;
+    --texto: #2a2a2a;
+    --blanco: #ffffff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background-color: var(--crema);
+    font-family: 'Lato', sans-serif;
+    color: var(--texto);
+    overflow-x: hidden;
+  }
+
+  /* ── FONDO FLORAL ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(122,173,138,0.12) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(74,124,92,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 50%, rgba(200,230,201,0.08) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Pétalos decorativos SVG en fondo */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cellipse cx='50' cy='80' rx='18' ry='28' fill='%234a7c5c' opacity='0.04' transform='rotate(-30 50 80)'/%3E%3Cellipse cx='200' cy='30' rx='14' ry='22' fill='%232d5a3d' opacity='0.04' transform='rotate(20 200 30)'/%3E%3Cellipse cx='350' cy='120' rx='16' ry='25' fill='%237aad8a' opacity='0.05' transform='rotate(-15 350 120)'/%3E%3Cellipse cx='80' cy='300' rx='20' ry='30' fill='%234a7c5c' opacity='0.04' transform='rotate(40 80 300)'/%3E%3Cellipse cx='300' cy='280' rx='12' ry='20' fill='%232d5a3d' opacity='0.03' transform='rotate(-25 300 280)'/%3E%3Cellipse cx='160' cy='200' rx='15' ry='24' fill='%237aad8a' opacity='0.04' transform='rotate(10 160 200)'/%3E%3Ccircle cx='120' cy='150' r='4' fill='%23b8976a' opacity='0.06'/%3E%3Ccircle cx='280' cy='360' r='3' fill='%23b8976a' opacity='0.06'/%3E%3Ccircle cx='370' cy='50' r='5' fill='%23b8976a' opacity='0.05'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+  }
+
+  .hero-flores {
+    font-size: 2.5rem;
+    letter-spacing: 12px;
+    margin-bottom: 24px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  @keyframes flotar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  .hero-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 10vw, 7rem);
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    line-height: 1;
+    letter-spacing: -1px;
+  }
+
+  .hero-titulo span {
+    font-style: italic;
+    color: var(--verde-medio);
+  }
+
+  .hero-subtitulo {
+    margin-top: 16px;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    font-weight: 300;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+  }
+
+  .hero-divisor {
+    margin: 32px auto;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--verde-claro), transparent);
+  }
+
+  .hero-mensaje {
+    max-width: 600px;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    line-height: 1.8;
+    color: var(--verde-oscuro);
+    opacity: 0.85;
+  }
+
+  .hero-scroll {
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--verde-claro);
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bajar 2s ease-in-out infinite;
+  }
+
+  .hero-scroll::after {
+    content: '↓';
+    font-size: 1.2rem;
+  }
+
+  @keyframes bajar {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(6px); }
+  }
+
+  /* ── TIMELINE ── */
+  .timeline-section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px 120px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .timeline-titulo {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--verde-oscuro);
+    margin-bottom: 64px;
+  }
+
+  .timeline-titulo span {
+    display: block;
+    font-weight: 300;
+    font-size: 0.7em;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 8px;
+  }
+
+  /* Línea central */
+  .timeline {
+    position: relative;
+    padding: 0 0 40px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, transparent, var(--verde-claro) 5%, var(--verde-claro) 95%, transparent);
+  }
+
+  /* Cada item */
+  .item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 72px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .item:nth-child(odd) {
+    flex-direction: row-reverse;
+  }
+
+  /* Punto en la línea */
+  .item-dot {
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--verde-oscuro);
+    border: 3px solid var(--crema);
+    box-shadow: 0 0 0 2px var(--verde-claro);
+    z-index: 2;
+    transition: transform 0.3s ease;
+  }
+
+  .item:hover .item-dot {
+    transform: translateX(-50%) scale(1.5);
+  }
+
+  /* Contenido */
+  .item-content {
+    width: calc(50% - 40px);
+    background: var(--blanco);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 24px rgba(45,90,61,0.08);
+    border: 1px solid rgba(122,173,138,0.2);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .item-content::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--verde-claro), var(--verde-oscuro));
+  }
+
+  .item:hover .item-content {
+    box-shadow: 0 8px 40px rgba(45,90,61,0.15);
+    transform: translateY(-4px);
+  }
+
+  .item:nth-child(odd) .item-content {
+    margin-left: auto;
+  }
+
+  .item-fecha {
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dorado);
+    margin-bottom: 6px;
+  }
+
+  .item-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--verde-oscuro);
+    margin-bottom: 8px;
+  }
+
+  .item-desc {
+    font-size: 0.88rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 12px;
+  }
+
+  /* Fotos en el item */
+  .item-fotos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .item-foto {
+    width: calc(50% - 4px);
+    aspect-ratio: 4/3;
+    border-radius: 10px;
+    object-fit: cover;
+    background: var(--crema-oscuro);
+    border: 2px dashed var(--verde-palido);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    color: var(--verde-claro);
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .item-foto:hover {
+    border-color: var(--verde-medio);
+  }
+
+  .item-foto img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: none;
+  }
+
+  .item-foto.loaded img {
+    display: block;
+  }
+
+  .item-foto.loaded .foto-label {
+    display: none;
+  }
+
+  .item-foto input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+  }
+
+  .foto-label {
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .foto-label::before {
+    content: '🌿';
+    font-size: 1.4rem;
+  }
+
+  /* 1 foto: ocupa todo el ancho */
+  .item-fotos.count-1 .item-foto { width: 100%; }
+
+  /* 3 fotos: primera ocupa todo, las otras dos mitad */
+  .item-fotos.count-3 .item-foto:first-child { width: 100%; }
+
+  /* 6 fotos: grid 3x2 */
+  .item-fotos.count-6 .item-foto,
+  .item-fotos.count-7 .item-foto { width: calc(33.33% - 6px); }
+
+  /* ── LIGHTBOX ── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .lightbox.open {
+    display: flex;
+  }
+
+  .lightbox img {
+    max-width: 90vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    object-fit: contain;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    line-height: 1;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+  }
+
+  .lightbox-close:hover { opacity: 1; }
+
+  /* ── FOOTER ── */
+  .footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 60px 24px 80px;
+    background: var(--verde-oscuro);
+    color: var(--crema);
+  }
+
+  .footer-flores {
+    font-size: 2rem;
+    letter-spacing: 8px;
+    margin-bottom: 16px;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  .footer-texto {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.4rem);
+    line-height: 1.8;
+    max-width: 500px;
+    margin: 0 auto;
+    opacity: 0.9;
+  }
+
+  .footer-firma {
+    margin-top: 24px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+  }
+
+  /* ── FLOR DECORATIVA SVG ── */
+  .orquidea-deco {
+    position: fixed;
+    z-index: 0;
+    opacity: 0.07;
+    pointer-events: none;
+  }
+
+  .orquidea-deco.top-right {
+    top: -40px;
+    right: -40px;
+    width: 320px;
+    transform: rotate(20deg);
+  }
+
+  .orquidea-deco.bottom-left {
+    bottom: 100px;
+    left: -60px;
+    width: 280px;
+    transform: rotate(-15deg);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .timeline::before { left: 20px; }
+    .item, .item:nth-child(odd) { flex-direction: column; padding-left: 50px; }
+    .item-dot { left: 20px; top: 16px; }
+    .item-content, .item:nth-child(odd) .item-content { width: 100%; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG flores decorativas -->
+<svg class="orquidea-deco top-right" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(0 100 60)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(72 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(144 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(216 100 100)"/>
+  <ellipse cx="100" cy="60" rx="25" ry="50" fill="#2d5a3d" transform="rotate(288 100 100)"/>
+  <circle cx="100" cy="100" r="15" fill="#4a7c5c"/>
+</svg>
+
+<svg class="orquidea-deco bottom-left" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(0 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(60 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(120 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(180 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(240 100 100)"/>
+  <ellipse cx="100" cy="55" rx="20" ry="45" fill="#4a7c5c" transform="rotate(300 100 100)"/>
+  <circle cx="100" cy="100" r="12" fill="#7aad8a"/>
+</svg>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-flores">🌿 🌸 🌿</div>
+  <h1 class="hero-titulo">Feliz cumpleaños,<br><span>Dianis</span></h1>
+  <p class="hero-subtitulo">Una historia de mejores amigos</p>
+  <div class="hero-divisor"></div>
+  <p class="hero-mensaje">
+    "Suena a tan poco tiempo el que llevamos juntos... pero quiero que cuando llegue al final de mi vida, el tiempo que viví sin conocerte sea lo más corto de todo."
+  </p>
+  <div class="hero-scroll">Nuestra historia</div>
+</section>
+
+<!-- ── TIMELINE ── -->
+<section class="timeline-section">
+  <h2 class="timeline-titulo">
+    <span>desde el principio</span>
+    Nuestros momentos
+  </h2>
+
+  <div class="timeline" id="timeline">
+
+    <!-- 1 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">2021 · Bachillerato</p>
+        <h3 class="item-titulo">El comienzo de todo 🌱</h3>
+        <p class="item-desc">Nos conocimos en el bachillerato. Sin saberlo aún, ahí empezaba algo muy especial.</p>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">21 de octubre, 2022</p>
+        <h3 class="item-titulo">La foto que no esperábamos 📸</h3>
+        <p class="item-desc">Nuestra primera foto juntas — y ni cuenta nos dimos cuando nos la tomaron.</p>
+        <div class="item-fotos count-1" data-count="1">
+          <div class="item-foto" data-index="0">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 1</div>
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">21 de enero, 2023</p>
+        <h3 class="item-titulo">Forky de Toy Story 🎨</h3>
+        <p class="item-desc">La primera pintura que te hice — Forky, de una de tus pelis favoritas. Hecho con todo el cariño del mundo.</p>
+        <div class="item-fotos count-2" data-count="2">
+          <div class="item-foto" data-index="0">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 1</div>
+            <img src="" alt="">
+          </div>
+          <div class="item-foto" data-index="1">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 2</div>
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">17 de marzo, 2023</p>
+        <h3 class="item-titulo">Los tirantes prometidos 🎀</h3>
+        <p class="item-desc">Mis primeros tirantes — y te prometí que no los usaría hasta que saliéramos juntas por primera vez. Una promesa que valía la pena guardar.</p>
+        <div class="item-fotos count-2" data-count="2">
+          <div class="item-foto" data-index="0">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 1</div>
+            <img src="" alt="">
+          </div>
+          <div class="item-foto" data-index="1">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 2</div>
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">12 de enero, 2024</p>
+        <h3 class="item-titulo">¡Por fin! Nuestra primera salida 🌟</h3>
+        <p class="item-desc">El día que tanto esperábamos. Y sí — salí con mis tirantes. Promesa cumplida.</p>
+        <div class="item-fotos count-6" data-count="6">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 3</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 4</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 5</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 6</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">2 de agosto, 2024</p>
+        <h3 class="item-titulo">Nuestro primer collar 💚</h3>
+        <p class="item-desc">El primer collar compartido. Pequeño símbolo de una amistad enorme.</p>
+        <div class="item-fotos count-1" data-count="1">
+          <div class="item-foto">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 1</div>
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">9 de agosto, 2024</p>
+        <h3 class="item-titulo">Acompañándote a estudiar 📚</h3>
+        <p class="item-desc">Un día contigo mientras ibas a donde estudiabas. A veces los días normales son los más especiales.</p>
+        <div class="item-fotos count-3" data-count="3">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 3</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">13 de febrero, 2025</p>
+        <h3 class="item-titulo">Otro día juntos 🌿</h3>
+        <p class="item-desc">Otro día acompañándote al estudio. Siempre es un buen día cuando estamos cerca.</p>
+        <div class="item-fotos count-1" data-count="1">
+          <div class="item-foto">
+            <input type="file" accept="image/*" onchange="cargarFoto(this)">
+            <div class="foto-label">Foto 1</div>
+            <img src="" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">23 de diciembre, 2025</p>
+        <h3 class="item-titulo">Esperándote en el hospital 🏥</h3>
+        <p class="item-desc">Fui a acompañarte cuando salías de tus horas sociales. Ahí estaba, esperándote.</p>
+        <div class="item-fotos count-2" data-count="2">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">31 de diciembre, 2025</p>
+        <h3 class="item-titulo">Bob Esponja 🧽🎨</h3>
+        <p class="item-desc">La segunda pintura que te hice — terminando el año con color y con mucho cariño.</p>
+        <div class="item-fotos count-2" data-count="2">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">6 de enero, 2026</p>
+        <h3 class="item-titulo">Segundo collar y un dibujo 💚✏️</h3>
+        <p class="item-desc">Nuestro segundo collar de la amistad y un dibujo para ti. Dos detalles, un solo sentimiento.</p>
+        <div class="item-fotos count-2" data-count="2">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">17 de enero, 2026</p>
+        <h3 class="item-titulo">Mi show de magia 🎩✨</h3>
+        <p class="item-desc">Te invité a uno de mis shows de magia por primera vez — y usé el pin que tú me regalaste. Ese pin significa mucho para mí.</p>
+        <div class="item-fotos count-4" data-count="4">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 3</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 4</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 13 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">14 de febrero, 2026</p>
+        <h3 class="item-titulo">Pulseras, cositas y mucho amor 💚🎀</h3>
+        <p class="item-desc">Un mini proyecto lleno de cariño: muchas pulseras y detallitos hechos especialmente para ti. Cada uno con amor.</p>
+        <div class="item-fotos count-7" data-count="7">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 3</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 4</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 5</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 6</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 7</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 14 -->
+    <div class="item">
+      <div class="item-dot"></div>
+      <div class="item-content">
+        <p class="item-fecha">Febrero, 2026</p>
+        <h3 class="item-titulo">La feria 🎡</h3>
+        <p class="item-desc">Un día en la feria juntos — luces, risas y los mejores recuerdos.</p>
+        <div class="item-fotos count-7" data-count="7">
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 1</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 2</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 3</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 4</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 5</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 6</div><img src="" alt=""></div>
+          <div class="item-foto"><input type="file" accept="image/*" onchange="cargarFoto(this)"><div class="foto-label">Foto 7</div><img src="" alt=""></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /timeline -->
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-flores">🌸 🌿 🌸</div>
+  <p class="footer-texto">
+    "Suena a tan poco tiempo el que llevamos juntos... pero quiero que cuando llegue al final de mi vida, el tiempo que viví sin conocerte sea lo más corto de todo."
+  </p>
+  <p class="footer-firma">Con todo mi cariño · Para Dianis 💚</p>
+</footer>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" onclick="cerrarLightbox()">✕</button>
+  <img src="" id="lightbox-img" alt="">
+</div>
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.item').forEach(el => observer.observe(el));
+
+  // ── Cargar foto desde archivo local ──
+  function cargarFoto(input) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const contenedor = input.parentElement;
+      const img = contenedor.querySelector('img');
+      img.src = e.target.result;
+      img.style.display = 'block';
+      contenedor.classList.add('loaded');
+
+      // Click para lightbox
+      img.onclick = function() {
+        abrirLightbox(e.target.result);
+      };
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+
+  // ── Lightbox ──
+  function abrirLightbox(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cerrarLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('lightbox').addEventListener('click', function(e) {
+    if (e.target === this) cerrarLightbox();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') cerrarLightbox();
+  });
+</script>
+</body>
+</html>
